@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">PokemonBox</string>
+    <string name="title_1">Pokemon</string>
+    <string name="title_2">Box</string>
+    <string name="search_placeholder">Search name or type...</string>
+    <string name="loading_description">Loading...</string>
+    <string name="info_not_available">Information not available</string>
+    <string name="error_message">Error: %1$s</string>
+    <string name="retry_button">Retry</string>
+    <string name="empty_favorites">No favorites</string>
+    <string name="favorites_title">Favorites</string>
+    <string name="go_back_title">Go back</string>
+</resources>
