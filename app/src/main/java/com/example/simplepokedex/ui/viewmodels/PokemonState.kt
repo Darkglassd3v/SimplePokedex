@@ -1,4 +1,4 @@
-package com.example.simplepokedex.ui.pokemonlist
+package com.example.simplepokedex.com.example.simplepokedex.ui.viewmodels
 
 import com.example.simplepokedex.data.remote.dto.PokemonResult
 import io.uniflow.core.flow.data.UIState
@@ -10,5 +10,6 @@ sealed class PokemonState : UIState() {
         val currentOffset: Int,
         val isPaging: Boolean = false
     ) : PokemonState()
+
     data class Error(val message: String) : PokemonState()
 }

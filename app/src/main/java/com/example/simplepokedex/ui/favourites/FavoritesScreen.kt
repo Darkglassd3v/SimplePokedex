@@ -7,7 +7,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.ArrowBack
+import androidx.compose.material.icons.automirrored.filled.ArrowBack
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.MaterialTheme
@@ -22,10 +22,10 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.simplepokedex.R
 import com.example.simplepokedex.data.remote.dto.PokemonResult
 import com.example.simplepokedex.ui.pokemonlist.PokemonCard
 import com.example.simplepokedex.ui.viewmodels.PokemonViewModel
-import com.example.simplepokedex.R
 
 @Composable
 fun FavoritesScreen(
@@ -40,7 +40,10 @@ fun FavoritesScreen(
             modifier = Modifier.padding(top = 24.dp, start = 16.dp, end = 16.dp, bottom = 8.dp)
         ) {
             IconButton(onClick = onBackClick) {
-                Icon(Icons.Default.ArrowBack, contentDescription = stringResource(R.string.go_back_title))
+                Icon(
+                    Icons.AutoMirrored.Filled.ArrowBack,
+                    contentDescription = stringResource(R.string.go_back_title)
+                )
             }
             Text(
                 text = stringResource(R.string.favorites_title),
@@ -71,8 +74,7 @@ fun FavoritesScreen(
                         pokemon = placeholderResult,
                         isFavorite = true,
                         onFavoriteClick = { viewModel.toggleFavorite(pokemonId) },
-                        fetchDetails = { viewModel.repository.getPokemonById(pokemonId) },
-                        fetchDescription = { viewModel.repository.getPokemonDescription(pokemonId) }
+                        viewModel = viewModel
                     )
                 }
             }

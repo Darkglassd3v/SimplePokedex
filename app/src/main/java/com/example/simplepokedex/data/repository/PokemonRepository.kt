@@ -3,8 +3,8 @@ package com.example.simplepokedex.data.repository
 import com.example.simplepokedex.data.local.dao.FavoriteDao
 import com.example.simplepokedex.data.local.entities.FavoriteEntity
 import com.example.simplepokedex.data.remote.PokeApiService
-import com.example.simplepokedex.data.remote.dto.PokemonResult
 import com.example.simplepokedex.data.remote.dto.PokemonDetailResponse
+import com.example.simplepokedex.data.remote.dto.PokemonResult
 import javax.inject.Inject
 import javax.inject.Singleton
 
@@ -38,15 +38,18 @@ class PokemonRepository @Inject constructor(
             emptyList()
         }
     }
+
     suspend fun getPokemonDescription(id: Int): String {
         return try {
             val species = apiService.getPokemonSpecies(id)
             val entry = species.flavorTextEntries.firstOrNull { it.language.name == "en" }
-            entry?.flavorText?.replace("\n", " ")?.replace("\u000c", " ") ?: "No description available."
+            entry?.flavorText?.replace("\n", " ")?.replace("\u000c", " ")
+                ?: "No description available."
         } catch (e: Exception) {
             "Description not available."
         }
     }
+
     suspend fun toggleFavorite(id: Int) {
         if (favoriteDao.isFavorite(id)) {
             favoriteDao.deleteFavorite(FavoriteEntity(id))

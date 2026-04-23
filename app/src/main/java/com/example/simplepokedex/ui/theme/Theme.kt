@@ -25,6 +25,7 @@ private val LightColorScheme = lightColorScheme(
     onBackground = LightText,
     onSurface = LightText
 )
+
 @Composable
 fun SimplePokedexTheme(
     darkTheme: Boolean = isSystemInDarkTheme(),
